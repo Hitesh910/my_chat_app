@@ -24,7 +24,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
             const Center(
               child: Text(
                 "Register",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(
@@ -71,8 +74,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   if (msg == "Success") {
                     Navigator.pop(context);
                   } else {
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text("${msg}")));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("${msg}"),
+                      ),
+                    );
                   }
                 },
                 child: const Text("Submit"),

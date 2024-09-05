@@ -24,6 +24,9 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const SizedBox(
+                height: 100,
+              ),
               const Center(
                 child: SizedBox(
                   height: 50,
@@ -43,7 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 10,
               ),
-              const Center(child: Text("Please login to continue using our app")),
+              const Center(
+                child: Text("Please login to continue using our app"),
+              ),
               const SizedBox(
                 height: 25,
               ),
@@ -52,13 +57,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 08,
               ),
               SizedBox(
-                  height: 40,
-                  width: MediaQuery.sizeOf(context).width - 20,
-                  child: TextFormField(
-                    controller: txtEmail,
-                    decoration:
-                        const InputDecoration(border: OutlineInputBorder()),
-                  )),
+                height: 40,
+                width: MediaQuery.sizeOf(context).width - 20,
+                child: TextFormField(
+                  controller: txtEmail,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -67,19 +74,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 08,
               ),
               SizedBox(
-                  width: MediaQuery.sizeOf(context).width - 20,
-                  child: TextFormField(
-                    controller: txtPassword,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                    ),
-                  )),
+                width: MediaQuery.sizeOf(context).width - 20,
+                child: TextFormField(
+                  controller: txtPassword,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text("Forget password ?")),
+                  alignment: Alignment.centerRight,
+                  child: Text("Forget password ?"),
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -91,19 +100,25 @@ class _LoginScreenState extends State<LoginScreen> {
                         .signIn(txtEmail.text, txtPassword.text);
 
                     if (msg == "Success") {
+                      AuthHelper.helper.checkUser();
                       Navigator.pushNamed(context, '/profile');
                     } else {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text("${msg}")));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("${msg}"),
+                        ),
+                      );
                     }
                   },
                   child: const Text("Submit"),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Center(child: Text("Or")),
+              const Center(
+                child: Text("Or"),
+              ),
               const SizedBox(
                 height: 10,
               ),
@@ -125,20 +140,32 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 40,
                   width: 200,
                   alignment: Alignment.center,
-                  child: InkWell(onTap: () async{
-                    await AuthHelper.helper.signInWithGoogleEmailAndPassword();
-
-                  },child: Image.asset("assets/images/google.png")),
+                  child: InkWell(
+                    onTap: () async {
+                      await AuthHelper.helper
+                          .signInWithGoogleEmailAndPassword();
+                      AuthHelper.helper.checkUser();
+                    },
+                    child: Image.asset("assets/images/google.png"),
+                  ),
                 ),
               ),
-              SizedBox(height: 40,),
+              const SizedBox(
+                height: 40,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Create a new Account. "),
-                  InkWell(onTap: () {
-                    Navigator.pushNamed(context, '/register');
-                  },child: Text("Sign up",style: TextStyle(color: Colors.red),))
+                  const Text("Create a new Account. "),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/register');
+                    },
+                    child: const Text(
+                      "Sign up",
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  )
                 ],
               )
             ],

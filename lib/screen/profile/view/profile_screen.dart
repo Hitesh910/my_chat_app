@@ -30,10 +30,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   async {
     controller.getData();
     if(controller.model!=null) {
-      txtName.text = await controller.model!.name!;
-      txtEmail.text = await controller.model!.name!;
-      txtBio.text = await controller.model!.name!;
-      txtMobile.text = await controller.model!.name!;
+      txtName.text = controller.model!.name!;
+      txtEmail.text = controller.model!.email!;
+      txtBio.text = controller.model!.bio!;
+      txtMobile.text = controller.model!.mobile!;
     }
   }
 
