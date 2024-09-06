@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mychat_app/utils/app_routes.dart';
+import 'package:mychat_app/utils/helper/fcm_helper.dart';
 import 'package:mychat_app/utils/services/notification_services.dart';
 
 import 'firebase_options.dart';
@@ -15,6 +16,8 @@ void main() async {
   );
   NotificationServices.notificationServices.initialize();
   tz.initializeTimeZones();
+  FcmHelper.helper.receiveData();
+
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,

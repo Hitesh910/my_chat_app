@@ -17,13 +17,20 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("Home"),
         actions: [
-          IconButton(onPressed: () {
-            NotificationServices.notificationServices.showSimpleNotification();
-          }, icon:  Icon(Icons.notification_add)),
+          // IconButton(onPressed: () {
+          //   NotificationServices.notificationServices.showSimpleNotification();
+          // }, icon:  const Icon(Icons.notification_add)),
+
           IconButton(onPressed: ()
-          async{
-          await  NotificationServices.notificationServices.showSchewdualNotification();
-          }, icon: Icon(Icons.timer))
+          {
+          NotificationServices.notificationServices.showSchedualNotification();
+          }, icon: const Icon(Icons.timer)),
+          // IconButton(onPressed: () {
+          //   NotificationServices.notificationServices.showBigImage();
+          // }, icon: Icon(Icons.photo)),
+          IconButton(onPressed: () {
+            NotificationServices.notificationServices.showMediaNotification();
+          }, icon: Icon(Icons.music_note))
         ],
       ),
       body: const Center(
